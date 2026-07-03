@@ -1,3 +1,4 @@
+const { REST, Routes, SlashCommandBuilder } = require("discord.js");
 const { Client, GatewayIntentBits, EmbedBuilder } = require("discord.js");
 require("dotenv").config();
 
