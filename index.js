@@ -28,6 +28,39 @@ function random(arr) {
 // 🟢 Bot ready
 client.once("ready", async () => {
   console.log(`Logged in as ${client.user.tag}`);
+
+  const commands = [
+    {
+      name: "hatch",
+      description: "Hatch a Sanrio egg"
+    },
+    {
+      name: "feed",
+      description: "Feed your pet"
+    },
+    {
+      name: "pet",
+      description: "Pet your Sanrio friend"
+    },
+    {
+      name: "profile",
+      description: "Check your pet stats"
+    }
+  ];
+
+  const { REST, Routes } = require("discord.js");
+  const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
+
+  try {
+    await rest.put(
+      Routes.applicationCommands(client.user.id),
+      { body: commands }
+    );
+
+    console.log("Slash commands registered!");
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 // 🥚 Slash Commands
